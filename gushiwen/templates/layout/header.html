@@ -1,0 +1,12 @@
+<div class="header">
+    <div class="header-nav">
+        {% for row in config.NAV_LIST %}
+
+            {% if row.url == request.path %}
+                <a href="{{row.url}}" class="selected">{{row.name}}</a>
+            {% else %}
+                <a href="{{row.url}}">{{row.name}}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

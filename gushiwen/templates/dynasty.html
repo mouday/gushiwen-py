@@ -1,0 +1,28 @@
+
+{% extends "/layout/base.html" %}
+
+
+{% block title %}Dynasty{% endblock %}
+
+{% block content %}
+
+<div class="content">
+    <div class="filter-box">
+        {% for row in dynasty_rows %}
+        {% if (row.id | string) == dynasty_id%}
+        <a href="?dynasty_id={{row.id}}" class="selected">{{row.name}}</a>
+        {% else %}
+        <a href="?dynasty_id={{row.id}}">{{row.name}}</a>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="count">诗歌总数：{{total}}</div>
+
+    {% include '/common/article-list.html' %}
+</div>
+
+{% endblock %}
+
+
+>

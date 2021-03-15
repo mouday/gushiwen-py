@@ -1,0 +1,21 @@
+{% extends "/layout/base.html" %}
+
+
+{% block title %}Author{% endblock %}
+
+{% block content %}
+
+<div class="content">
+
+    <div class="count">作者总数：{{total}}</div>
+
+    <div class="author-box">
+        {#{author_rows | dump }#}
+
+        {% for row in author_rows %}
+            <a href="{{url_for('.author', author_id=row.id)}}">{{row.name}} <span class="info">({{row.dynasty | dynasty}})</span></a>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

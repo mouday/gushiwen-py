@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    {% block head %}
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/static/css/main.css"/>
+    <title>{% block title %}{% endblock %} - 古诗文</title>
+    {% endblock %}
+</head>
+
+<body>
+
+{% block header %}
+    {% include '/layout/header.html' %}
+{% endblock %}
+
+{% block content %}{% endblock %}
+
+{% block footer %}
+    {% include '/layout/footer.html' %}
+{% endblock %}
+
+</body>
+</html>

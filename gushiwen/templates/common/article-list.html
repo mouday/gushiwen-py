@@ -1,0 +1,21 @@
+<div class="article-list">
+    {% for row in list %} {#{row | dump}#}
+    <div class="article-box">
+        <h2>
+            <a href="{{url_for('.detail', uid=row.id)}}"
+               target="_blank"
+               class="article-title"
+            >{{row.title}}</a>
+        </h2>
+
+        <div class="article-info">
+            <a href="{{url_for('.author', author_id=row.author.id)}}"
+            >{{row.author.name}}</a>
+            <a href="{{url_for('.dynasty')}}?dynasty_id={{row.author.dynasty}}"
+            >〔{{row.author.dynasty | dynasty }}〕</a>
+        </div>
+
+        <div class="article-content">{{row.content | content }}</div>
+    </div>
+    {% endfor %}
+</div>

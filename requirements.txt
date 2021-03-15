@@ -1,0 +1,10 @@
+jinja2
+fire
+parsel
+requests
+environs
+flask
+peewee
+mo_cache
+flask_apscheduler
+pymysql
