@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
-from flask_apscheduler import APScheduler
-from playhouse.flask_utils import FlaskDB
 
 from gushiwen import config
 from gushiwen.data.import_db import async_import_data_to_db
+from gushiwen.extension.scheduler import register_scheduler
 from gushiwen.filters import register_filters
-from gushiwen.model.database import db
+from gushiwen.model import register_database
 from gushiwen.view import register_blueprint
 
 app = Flask(__name__)
 app.config.from_object(config)
 
-FlaskDB(app=app, database=db)
+# 注册数据库
+register_database(app)
 
 # 注册路由
 register_blueprint(app)
@@ -20,10 +20,8 @@ register_blueprint(app)
 # 注册过滤器
 register_filters(app)
 
-# 定时任务
-scheduler = APScheduler()
-scheduler.init_app(app)
-scheduler.start()
+# 注册定时任务
+register_scheduler(app)
 
 
 @app.before_first_request
